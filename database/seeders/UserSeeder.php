@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'ci' => '14785214',
             'name' => 'Admin',
             'telefono' => '+59178451236',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@insuconsadmin.com',
             'password' => Hash::make('password'),
         ])->assignRole('Admin');
 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'ci' => fake()->unique()->randomNumber(8, true),
             'name' => 'José Andres Garcia Chavez',
             'telefono' => fake()->e164PhoneNumber(),
-            'email' => 'andres@admin.com',
+            'email' => 'andres@insucons.com',
             'password' => Hash::make('63489070'),
         ])->assignRole('Empleado');
 
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'ci' => fake()->unique()->randomNumber(8, true),
             'name' => 'Bebi Vargas Rios',
             'telefono' => fake()->e164PhoneNumber(),
-            'email' => 'bebi@admin.com',
+            'email' => 'bebi@insucons.com',
             'password' => Hash::make('65036977'),
         ])->assignRole('Empleado');
 
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             'ci' => fake()->unique()->randomNumber(8, true),
             'name' => 'Kasandra Mamani Rodriguez',
             'telefono' => fake()->e164PhoneNumber(),
-            'email' => 'kasandra@admin.com',
+            'email' => 'kasandra@insucons.com',
             'password' => Hash::make('77037288'),
         ])->assignRole('Empleado');
 
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             'ci' => fake()->unique()->randomNumber(8, true),
             'name' => 'Gabriel Mercado Pinto',
             'telefono' => fake()->e164PhoneNumber(),
-            'email' => 'gabriel@admin.com',
+            'email' => 'gabriel@insucons.com',
             'password' => Hash::make('65849717'),
         ])->assignRole('Empleado');
 
