@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'ci' => '14785214',
             'name' => 'Admin',
             'telefono' => '+59178451236',
-            'email' => 'admin@insuconsadmin.com',
+            'email' => 'admin@insucons.com',
             'password' => Hash::make('password'),
         ])->assignRole('Admin');
 
