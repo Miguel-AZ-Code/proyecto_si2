@@ -355,6 +355,7 @@ return [
             'text' => 'Entradas y Salidas',
             'icon' => 'fas fa-fw fa-dolly',
             'submenu' => [
+
                 [
                     'text' => 'Facturas',
                     // 'route'  => 'admin.facturas.index',
@@ -363,6 +364,12 @@ return [
                     'can' => 'admin.facturas.index',
                     'label' => 'Proximamente',
                     'label_icon' => 'info',
+                ],
+                [
+                    'text' => 'Tipo de Notas',
+                    'route'  => 'admin.tiponotas.index',
+                    'icon' => 'fas fa-fw fa-clipboard-check',
+                    'can' => 'admin.tiponotas.index',
                 ],
                 [
                     'text' => 'Notas',

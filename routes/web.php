@@ -12,6 +12,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TiponotaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Route::resource('cargos', CargoController::class)->names('admin.cargos');
 Route::resource('contratos', CargoempleadoController::class)->names('admin.contratos'); //       ojo
 Route::resource('servicios', ServicioController::class)->names('admin.servicios');
 Route::resource('materiales', MaterialController::class)->names('admin.materiales');
+Route::resource('tiponotas',TiponotaController::class)->names('admin.tiponotas');
 Route::resource('notas', NotaController::class)->names('admin.notas');
 Route::resource('items', MaterialservicioController::class)->names('admin.items'); //   ojo
 Route::resource('personas', PersonaController::class)->names('admin.personas');
