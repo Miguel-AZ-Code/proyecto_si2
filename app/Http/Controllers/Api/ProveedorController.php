@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Servicio;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
-class ServicioController extends Controller
+class ProveedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return Servicio::all();
+        return Proveedor::all();
     }
 
     /**
@@ -27,56 +27,46 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'costo' => 'required|numeric|min:1|max:1500'
+            'nit' => 'required',
+            'empresa' => 'required'
         ]);
 
-        return Servicio::create($request->all());
+        return Proveedor::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Proveedor $proveedor)
     {
-        return Servicio::findOrFail($id);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $servicio = Servicio::find($id);
-        $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'costo' => 'required',
-        ]);
-        $servicio->update($request->all());
-        return $servicio;
+        $proveedor = Proveedor::find($id);
+        $proveedor->update($request->all());
+        return $proveedor;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $servicio = Servicio::find($id);
-
-        $servicio->delete();
-
-        return response()->noContent();
+        return Proveedor::destroy($id);
     }
 }

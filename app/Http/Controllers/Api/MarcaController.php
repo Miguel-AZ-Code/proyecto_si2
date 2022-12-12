@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Servicio;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 
-class ServicioController extends Controller
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return Servicio::all();
+        return Marca::all();
     }
 
     /**
@@ -27,55 +27,51 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'costo' => 'required|numeric|min:1|max:1500'
+            'nombre' => 'required'
         ]);
 
-        return Servicio::create($request->all());
+        return Marca::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return Servicio::findOrFail($id);
+        return Marca::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $servicio = Servicio::find($id);
+        $marca = Marca::find($id);
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'costo' => 'required',
+            'nombre' => 'required'
         ]);
-        $servicio->update($request->all());
-        return $servicio;
+        $marca->update($request->all());
+        return $marca;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $servicio = Servicio::find($id);
+        $marca = Marca::find($id);
 
-        $servicio->delete();
+        $marca->delete();
 
         return response()->noContent();
     }

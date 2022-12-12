@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Servicio;
+use App\Models\Medida;
 use Illuminate\Http\Request;
 
-class ServicioController extends Controller
+class MedidaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,67 +15,63 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        return Servicio::all();
+        return Medida::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMedidaRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'costo' => 'required|numeric|min:1|max:1500'
+            'unidad' => 'required'
         ]);
 
-        return Servicio::create($request->all());
+        return Medida::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Medida  $medida
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return Servicio::findOrFail($id);
+        return Medida::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateMedidaRequest  $request
+     * @param  \App\Models\Medida  $medida
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $servicio = Servicio::find($id);
+        $medida = Medida::find($id);
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'costo' => 'required',
+            'unidad' => 'required'
         ]);
-        $servicio->update($request->all());
-        return $servicio;
+        $medida->update($request->all());
+        return $medida;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Medida  $medida
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $servicio = Servicio::find($id);
+        $marca = Medida::find($id);
 
-        $servicio->delete();
+        $marca->delete();
 
         return response()->noContent();
     }
