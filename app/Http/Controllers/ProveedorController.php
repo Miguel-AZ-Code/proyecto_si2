@@ -123,3 +123,4 @@ class ProveedorController extends Controller
             ->with('success', 'Proveedore deleted successfully');
     }
 }
+

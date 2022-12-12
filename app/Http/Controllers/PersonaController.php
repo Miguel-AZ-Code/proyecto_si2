@@ -15,7 +15,7 @@ class PersonaController extends Controller
         $this->middleware('can:admin.personas.show')->only('show');
         $this->middleware('can:admin.personas.destroy')->only('destroy');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
