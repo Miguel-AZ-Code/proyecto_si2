@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
 
 class Servicio extends Model
 {
@@ -15,4 +16,13 @@ class Servicio extends Model
         'descripcion',
         'costo'
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['nombre', 'descripcion', 'costo'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} Servicio")
+            ->useLogName('user');
+        // Chain fluent methods for configuration options
+    }
 }

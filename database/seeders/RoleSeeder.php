@@ -182,6 +182,27 @@ class RoleSeeder extends Seeder
             'name' => 'admin.entradas.menu',
             'descripcion' => 'MENU ENTRADAS Y SALIDAS'
         ])->syncRoles([$role1, $role2]);
+        //TIPO DE NOTA
+        Permission::create([
+            'name'=> 'admin.tiponotas.index',
+            'descripcion'=>'Listar tipos de notas'
+        ])->syncRoles([$role1,$role2]);
+        Permission::create([
+            'name'=> 'admin.tiponotas.create',
+            'descripcion'=>'crear tipos de notas'
+        ])->syncRoles([$role1,$role2]);
+        Permission::create([
+            'name'=> 'admin.tiponotas.show',
+            'descripcion'=>'mostrar tipos de notas'
+        ])->syncRoles([$role1,$role2]);
+        Permission::create([
+            'name'=> 'admin.tiponotas.edit',
+            'descripcion'=>'editar tipos de notas'
+        ])->syncRoles([$role1,$role2]);
+        Permission::create([
+            'name'=> 'admin.tiponotas.destroy',
+            'descripcion'=>'eliminar tipos de notas'
+        ])->syncRoles([$role1,$role2]);
         // FACTURAS
         Permission::create([
             'name' => 'admin.facturas.index',
