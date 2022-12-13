@@ -56,6 +56,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('65849717'),
         ])->assignRole('Empleado');
 
-        User::factory(21)->create();
+        User::create([
+            'ci' => fake()->unique()->randomNumber(8, true),
+            'name' => 'YASIR ARCE',
+            'telefono' => fake()->e164PhoneNumber(),
+            'email' => 'yasir@gmail.com',
+            'password' => Hash::make('65849717'),
+        ])->assignRole('Cliente');
+
+        // User::factory(21)->create();
     }
 }
