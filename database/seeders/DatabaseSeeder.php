@@ -29,6 +29,14 @@ class DatabaseSeeder extends Seeder
             MarcaSeeder::class,
             ServicioSeeder::class,
             ProveedorSeeder::class,
+
+             PresupuestoSeed::class,
+             PagoSeed::class,
+             FacturaSeed::class,
+             InformeSeed::class,
+             ProyectoSeed::class,
+            ContratoSeed::class,
+            DocumentoSeed::class,
         ]);
     }
 }

@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('contrato_id')
+            ->nullable()
+            ->constrained('contratos')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+
             $table->String('Titulo');
             $table->String('URL');
             $table->timestamps();

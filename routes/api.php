@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\MarcaController;
 use App\Http\Controllers\Api\MedidaController;
 use App\Http\Controllers\Api\ProveedorController;
 use App\Http\Controllers\Api\ServicioController;
+use App\Http\Controllers\ContratoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +29,12 @@ Route::post("/signup",[AuthController::class,"signup"]);
 // Route::apiResource('marcas', MarcaController::class);
 // Route::apiResource('medidas', MedidaController::class);
 // Route::apiResource('servicios', ServicioController::class);
+
 //TODO: RUTAS PROTEGIDAS POR SANCTUM
 Route::group(['middleware'=>'auth:sanctum'],function () {
     Route::post("/logout",[AuthController::class,"logout"]);
+    Route::get("/contracto",[ClienteController::class,"getContratos"]);
+    Route::get("/documento",[ClienteController::class,"getDocumento"]);
 
 
 });

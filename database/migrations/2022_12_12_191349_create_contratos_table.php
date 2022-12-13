@@ -15,10 +15,17 @@ return new class extends Migration
     {
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
             $table->string('descripcion');
-            $table->unsignedBigInteger('documento_id')
+
+            $table->foreignId('cliente_id')
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+           /*  $table->unsignedBigInteger('documento_id')
             ->foreign('documento_id')->references('id')->on('documentos')
-            ->onDelete('cascade');
+            ->onDelete('cascade'); */
             $table->unsignedBigInteger('presupuesto_id')
             ->foreign('presupuesto_id')->references('id')->on('presupuestos')
             ->onDelete('cascade');
