@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\MarcaController;
 use App\Http\Controllers\Api\MedidaController;
@@ -20,15 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Rutas de autentificación
-Route::post('register', [LoginController::class, 'register']);
-Route::post('login', [LoginController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 // Route::apiResource('marcas', MarcaController::class);
 // Route::apiResource('medidas', MedidaController::class);
 // Route::apiResource('servicios', ServicioController::class);
 
 
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+/* Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [LoginController::class, 'logout']);
     // Servicios route
     Route::apiResource('servicios', ServicioController::class);
@@ -43,3 +44,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+ */

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Cliente;
+use App\Models\User;
 
+use App\Models\Cliente;
 use App\Traits\ApiResponder;
+use Laravel\Sanctum\Sanctum;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use Laravel\Sanctum\Sanctum;
 
 class AuthController extends Controller
 {
@@ -24,9 +26,15 @@ class AuthController extends Controller
 
         ]);
 
-        $cliente=Cliente::select(["id","name","password","email"])
+/*         $cliente=User::select(["id","name","password","email"])
+
                         ->where("email",request("email"))
-                        ->first();
+                        ->first(); */
+           $cliente=DB::table("users")
+                       ->select(["users.id","users.name","users.password","users.email"])
+                       ->join("model_has_roles","model_has_roles.model_id","=","users.id")
+                       ->where("model_has_roles.role_id",3)
+                       ->first();
 
         /* Verificacion si el cliente existe */
         if (!$cliente || ! Hash::check(request("password"),$cliente->password)){
@@ -58,7 +66,7 @@ class AuthController extends Controller
             "passwordConfirmation"=>"required|same:password|min:8|max:20",
         ]);
 
-        Cliente::create([
+        User::create([
             "name"=>request("name"),
             "email"=>request("email"),
             "password"=>bcrypt(request("password")),
