@@ -21,12 +21,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Rutas de autentificación
-Route::post('register', [AuthController::class, 'register']);
+// Route::post('register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post("/signup",[AuthController::class,"signup"]);
 // Route::apiResource('marcas', MarcaController::class);
 // Route::apiResource('medidas', MedidaController::class);
 // Route::apiResource('servicios', ServicioController::class);
+//TODO: RUTAS PROTEGIDAS POR SANCTUM
+Route::group(['middleware'=>'auth:sanctum'],function () {
+    Route::post("/logout",[AuthController::class,"logout"]);
 
+
+});
 
 
 /* Route::group(['middleware' => ['auth:sanctum']], function () {
