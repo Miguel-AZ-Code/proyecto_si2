@@ -1,11 +1,11 @@
-@extends('adminlte::page')
+{{-- @extends('adminlte::page') --}}
 
-@section('template_title')
+{{-- @section('template_title')
     <H1> GENERAR PDF</H1>
 @endsection
 
 @section('content')
-    <br>
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -17,9 +17,9 @@
 
                                 {{ __('BUSQUEDA DE USUARIOS') }}
 
-                            </span>
+                            </span> 
 
-                          {{--   {{{Form::open(['route'=>'users.pdf','method'=>'GET','class'=>'form-inline pull-right']) }}}
+                            {{-- {{{Form::open(['route'=>'users.pdf','method'=>'GET','class'=>'form-inline pull-right']) }}}
                             @csrf
                             <div class="form-group">
                                 {{ Form::text('name',null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
@@ -31,19 +31,19 @@
                             &nbsp;
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary"> GENERAR PDF
-                                   {{--  <span class="glyphicon glyphicon-search"></span> --}
+                                
                                 </button>
                             </div>
                             &nbsp;
 
-                            {{{ Form::close() }}} --}}
+                            {{{ Form::close() }}} 
 
 
                         </div>
-                    </div>
+                    </div>--}}
 
-                    <div class="card-body">
-                        <div class="table-responsive">
+                    {{-- <div class="card-body">
+                        <div class="table-responsive"> --}}
                             <table id="usuarios" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
@@ -72,14 +72,14 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        {{-- </div>
                     </div>
                 </div>
                 {{-- {!! $users->links() !!} --}}
-            </div>
+           {{--  </div>
         </div>
-    </div>
-@endsection
+    </div> --}}
+{{--@endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
@@ -87,7 +87,7 @@
 @endsection
 
 @section('js')
-   {{--  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
@@ -96,5 +96,6 @@
             responsive: true,
             autoWidth: false
         });
-    </script> --}}
+    </script> 
 @endsection
+ --}}

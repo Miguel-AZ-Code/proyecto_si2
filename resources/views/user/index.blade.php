@@ -18,8 +18,8 @@
                                 {{ __('USUARIOS') }}
 
                             </span>
-
-                            {{{Form::open(['route'=>'users.index','method'=>'GET','class'=>'form-inline pull-right']) }}}
+                            <div class="float-right">
+                            {{{Form::open(['route'=>'users.pdf','method'=>'GET','class'=>'form-inline pull-left']) }}}
 
                            @csrf
                             <div class="form-group">
@@ -32,21 +32,15 @@
                             <hr>
                             <div class="form-group">
 
-                                {{-- <a href="{{ route('users.pdf',[$users]) }}" class="btn btn-danger btn-sm float-left"
-                                data-placement="left">
-                                {{ __('GENERAR PDF') }}
-                                </a> --}}
-                                <a href="{{ route('users.pdf',[$users]) }}">Generate my pdf</a>
-                                <hr>
-                                <hr>
+                                   
 
-                                <button type="submit" class="btn btn-primary"> search
+                                <button type="submit" class="btn btn-danger btn-sm float-left"> PDF
                                    {{--  <span class="glyphicon glyphicon-search"></span> --}}
                                 </button>
                             </div>
                             {{{ Form::close() }}}
-                        </form>
-                            <div class="float-right">
+                        
+                            
 
                             </div>
                             @can('users.create')
@@ -120,16 +114,21 @@
                         </div>
                     </div>
                 </div>
-                {{-- {!! $users->links() !!} --}}
+                {{-- {!! $users->links() !!}  pensaba redirigir del index al pdf (las vistas le voy a dar desde pdf y lo genero ahi
+                no, lo que queria hacer es generar un pdf atravez de un filtrado en el index pero el index trabaja con su formulario 
+               ya bro 
+               gracias  estare todo el dia libre ya puej gracias bro  chau 
+                )--}}
             </div>
         </div>
     </div>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css">
 @endsection
+   
 
 @section('js')
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

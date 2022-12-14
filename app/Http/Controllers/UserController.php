@@ -39,24 +39,24 @@ class UserController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
     public function pdf(Request $request ){
-        dd($request);  // ayudita
+       // dd($request);  // ayudita
 
-    //     $name=$request->get('name');
-    //     $email=$request->get('email');
-    //    /*  $name =$r->name;
-    //     $email =$r->email; */
-
-    //     /* $S=User::BD->where */
-    //     $users = User::OrderBy('id','DESC')
-    //     ->name($name)
-    //     ->email($email)
-    //     ->paginate();
-         /* $pdf = PDF::loadview('user.pdf',['users'=>$users]);
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream(); */
-        return view('user.pdf', compact('request'));
+        $name=$request->get('name');
+       $email=$request->get('email');
+      $users = User::OrderBy('id','DESC')
+         ->name($name)
+        ->email($email)
+        ->paginate();
+           $pdf = PDF::loadview('user.pdf',['users'=>$users]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream(); 
+        return view('user.pdf', compact('users'));
     }
+   /*  public function fenix(){
+         return redirect()->route('users.pdf');
+    }   ya
 
+ */
     /**
      * Show the form for creating a new resource.
      *
