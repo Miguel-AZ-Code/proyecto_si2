@@ -14,15 +14,49 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('User') }}
+
+                                {{ __('USUARIOS') }}
+
                             </span>
 
+                            {{{Form::open(['route'=>'users.index','method'=>'GET','class'=>'form-inline pull-right']) }}}
+
+                           @csrf
+                            <div class="form-group">
+                                {{ Form::text('name',null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                {{ Form::text('email',null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
+                            </div>
+                            <hr>
+                            <div class="form-group">
+
+                                {{-- <a href="{{ route('users.pdf',[$users]) }}" class="btn btn-danger btn-sm float-left"
+                                data-placement="left">
+                                {{ __('GENERAR PDF') }}
+                                </a> --}}
+                                <a href="{{ route('users.pdf',[$users]) }}">Generate my pdf</a>
+                                <hr>
+                                <hr>
+
+                                <button type="submit" class="btn btn-primary"> search
+                                   {{--  <span class="glyphicon glyphicon-search"></span> --}}
+                                </button>
+                            </div>
+                            {{{ Form::close() }}}
+                        </form>
+                            <div class="float-right">
+
+                            </div>
                             @can('users.create')
                                 <div class="float-right">
+
                                     <a href="{{ route('users.create') }}" class="btn btn-success btn-sm float-right"
-                                        data-placement="left">
-                                        {{ __('Create New') }}
-                                    </a>
+                                    data-placement="left">
+                                    {{ __('Create New') }}
+                                </a>
+
                                 </div>
                             @endcan
 

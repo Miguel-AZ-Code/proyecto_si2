@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
             $table->String('Titulo');
-            $table->String('URL');
+            $table->String('URL');//revisar
             $table->timestamps();
         });
     }

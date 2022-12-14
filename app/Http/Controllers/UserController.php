@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 /**
  * Class UserController
  * @package App\Http\Controllers
@@ -20,18 +20,41 @@ class UserController extends Controller
         $this->middleware('can:users.show')->only('show');
         $this->middleware('can:users.destroy')->only('destroy');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        $users = User::paginate();
-
-        return view('user.index', compact('users'))
+        $name=$request->get('name');
+        $email=$request->get('email');
+        $users = User::OrderBy('id','ASC')
+        ->name($name)
+        ->email($email)
+        ->paginate();
+        /* dd($request); */
+         return view('user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+    }
+    public function pdf(Request $request ){
+        dd($request);  // ayudita
+
+    //     $name=$request->get('name');
+    //     $email=$request->get('email');
+    //    /*  $name =$r->name;
+    //     $email =$r->email; */
+
+    //     /* $S=User::BD->where */
+    //     $users = User::OrderBy('id','DESC')
+    //     ->name($name)
+    //     ->email($email)
+    //     ->paginate();
+         /* $pdf = PDF::loadview('user.pdf',['users'=>$users]);
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream(); */
+        return view('user.pdf', compact('request'));
     }
 
     /**

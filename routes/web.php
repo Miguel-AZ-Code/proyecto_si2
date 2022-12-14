@@ -49,3 +49,5 @@ Route::resource('tiponotas',TiponotaController::class)->names('admin.tiponotas')
 Route::resource('notas', NotaController::class)->names('admin.notas');
 Route::resource('items', MaterialservicioController::class)->names('admin.items'); //   ojo
 Route::resource('personas', PersonaController::class)->names('admin.personas');
+ Route::get('users/pdf',[App\Http\Controllers\UserController::class, 'pdf'])->name('users.pdf');
+
