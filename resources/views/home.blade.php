@@ -11,6 +11,7 @@
             Plataforma digital para realizar tus propios cómputos, presupuestos en tiempo real y vincularte con clientes y
             comercios.
         </p>
+        <a href="{{asset('documentos/pdf1670997099.pdf')}}">DESCARGAR </a>
     </div>
 @stop
 

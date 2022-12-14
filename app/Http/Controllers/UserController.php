@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documento;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -20,7 +21,7 @@ class UserController extends Controller
         $this->middleware('can:users.show')->only('show');
         $this->middleware('can:users.destroy')->only('destroy');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -124,5 +125,12 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+
+
+    // VISTA DE PRUEBA PARA EL PDF
+    public function descPDF(Request $request){
+        $doc=Documento::all();
+        return view("home",compact('doc'));
     }
 }
