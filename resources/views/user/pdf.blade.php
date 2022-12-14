@@ -19,6 +19,7 @@
                 <th>Name</th>
                 <th>Telefono</th>
                 <th>Email</th>
+               {{--  <th>Fecha</th> --}}
 
                 <th></th>
             </tr>
@@ -33,6 +34,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->telefono }}</td>
                     <td>{{ $user->email }}</td>
+                  {{--   <td>{{ $user->created_at/* ->diffForHumans() */ }}</td> --}}
                 </tr>
             @endforeach
         </tbody>

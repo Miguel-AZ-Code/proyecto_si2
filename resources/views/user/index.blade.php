@@ -19,7 +19,7 @@
 
                             </span>
                             <div class="float-right">
-                            {{{Form::open(['route'=>'users.pdf','method'=>'GET','class'=>'form-inline pull-left']) }}}
+                            {{{Form::open(['route'=>'users.index','method'=>'GET','class'=>'form-inline pull-left']) }}}
 
                            @csrf
                             <div class="form-group">
@@ -31,21 +31,23 @@
                             <div class="form-group">
                                 {{ Form::text('email',null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
                             </div>
-                            <hr>
+                          
+                            &nbsp;
+                            &nbsp;
+                            {{-- <div class="form-group">
+                                {{ Form::date('created_at',null, ['class' => 'form-control' . ($errors->has('created_at') ? ' is-invalid' : '')]) }}
+                            </div> --}}
                             &nbsp;
                             &nbsp;
                             <div class="form-group">
  
                                 <button type="submit" class="btn btn-danger btn-sm float-left"> PDF
                                    {{--  <span class="glyphicon glyphicon-search"></span> --}}
-                                </button>
-
+                                </button> 
+                              
                             </div>
 
                             {{{ Form::close() }}}
-                        
-                            
-
                             </div>
                             @can('users.create')
                                 <div class="float-right">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medida;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MedidaController extends Controller
 {
@@ -23,11 +24,17 @@ class MedidaController extends Controller
     public function index()
     {
         $medidas = Medida::paginate();
-
         return view('medidas.index', compact('medidas'))
             ->with('i', (request()->input('page', 1) - 1) * $medidas->perPage());
     }
 
+    public function pdf(){
+            $medidas  =   Medida::paginate();
+            $pdf    =   PDF::loadview('medidas.pdf',['users'=>$medidas]);
+             /*  return $pdf->download('Usuarios.pdf');  */   //Opcion 1 
+             return $pdf->stream();                         //opcion 2
+         
+     }
     /**
      * Show the form for creating a new resource.
      *

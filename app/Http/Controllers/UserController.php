@@ -28,9 +28,9 @@ class UserController extends Controller
      */
     public function index( Request $request )
     {
-        $name=$request->get('name');
-        $email=$request->get('email');
-        $users = User::OrderBy('id','ASC')
+        $name  =  $request->get('name');
+        $email =  $request->get('email');
+        $users =  User::OrderBy('id','ASC')
         ->name($name)
         ->email($email)
         ->paginate();
@@ -40,17 +40,19 @@ class UserController extends Controller
     }
     public function pdf(Request $request ){
        // dd($request);  // ayudita
-
         $name=$request->get('name');
        $email=$request->get('email');
+       $fecha =$request->get('created_at');
       $users = User::OrderBy('id','DESC')
-         ->name($name)
+        ->name($name)
         ->email($email)
+        ->fecha($fecha)
         ->paginate();
            $pdf = PDF::loadview('user.pdf',['users'=>$users]);
 
-        return $pdf->download('Usuarios.pdf'); 
-        return view('user.pdf', compact('users'));
+       /*  return $pdf->download('Usuarios.pdf');  */   //Opcion 1 
+         return $pdf->stream();                         //opcion 2
+        //return view('user.pdf', compact('users'));
     }
    
     /**

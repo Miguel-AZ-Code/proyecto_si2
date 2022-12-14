@@ -75,4 +75,9 @@ class User extends Authenticatable
         return $query->where('email','LIKE',"%$email%");
     }
  }
+ public function scopeFecha($query,$fecha){
+    if($fecha){
+        return $query->where('created_at','LIKE',"%$fecha%");
+    }
+ }
 }
