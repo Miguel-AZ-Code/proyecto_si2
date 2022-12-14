@@ -48,15 +48,11 @@ class UserController extends Controller
         ->email($email)
         ->paginate();
            $pdf = PDF::loadview('user.pdf',['users'=>$users]);
-        //$pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream(); 
+
+        return $pdf->download('Usuarios.pdf'); 
         return view('user.pdf', compact('users'));
     }
-   /*  public function fenix(){
-         return redirect()->route('users.pdf');
-    }   ya
-
- */
+   
     /**
      * Show the form for creating a new resource.
      *

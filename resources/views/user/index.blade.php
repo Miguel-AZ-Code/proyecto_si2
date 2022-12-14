@@ -26,18 +26,22 @@
                                 {{ Form::text('name',null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
                             </div>
                             <hr>
+                            &nbsp;
+                            &nbsp;
                             <div class="form-group">
                                 {{ Form::text('email',null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
                             </div>
                             <hr>
+                            &nbsp;
+                            &nbsp;
                             <div class="form-group">
-
-                                   
-
+ 
                                 <button type="submit" class="btn btn-danger btn-sm float-left"> PDF
                                    {{--  <span class="glyphicon glyphicon-search"></span> --}}
                                 </button>
+
                             </div>
+
                             {{{ Form::close() }}}
                         
                             
