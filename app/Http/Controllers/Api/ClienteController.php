@@ -58,7 +58,7 @@ class ClienteController extends Controller
             $doc = new Documento;
             $doc->contrato_id = $request->id_contrato;
             $doc->Titulo = $nombre;
-            $doc->URL = "https://insucons.website/documentos/".$nombre;
+            $doc->URL = "http://192.168.100.180:8000/documentos/".$nombre;
             $doc->save();
         }
 
