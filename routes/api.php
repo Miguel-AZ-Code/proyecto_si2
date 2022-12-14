@@ -29,13 +29,13 @@ Route::post("/signup",[AuthController::class,"signup"]);
 // Route::apiResource('marcas', MarcaController::class);
 // Route::apiResource('medidas', MedidaController::class);
 // Route::apiResource('servicios', ServicioController::class);
+Route::post("/documentos",[ClienteController::class,"postDocumento"]);
 
 //TODO: RUTAS PROTEGIDAS POR SANCTUM
 Route::group(['middleware'=>'auth:sanctum'],function () {
     Route::post("/logout",[AuthController::class,"logout"]);
     Route::get("/contracto",[ClienteController::class,"getContratos"]);
     Route::get("/documento",[ClienteController::class,"getDocumento"]);
-    Route::post("/documentos",[ClienteController::class,"postDocumento"]);
 
 });
 
