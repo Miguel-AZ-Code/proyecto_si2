@@ -58,13 +58,15 @@ class AuthController extends Controller
     {
         request()->validate([
             "name" => "required|min:2|max:60",
-            "email" => "required|email|unique:clientes",
+            "email" => "required|email|unique:users",
             "password" => "required|min:8|max:20",
             "passwordConfirmation" => "required|same:password|min:8|max:20",
         ]);
 
         User::create([
             "name" => request("name"),
+            "ci" => request("ci"),
+            "telefono" => request("telefono"),
             "email" => request("email"),
             "password" => bcrypt(request("password")),
             "created_at" => now(),
