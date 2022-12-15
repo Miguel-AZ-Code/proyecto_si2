@@ -320,7 +320,7 @@ return [
             ],
             'can' => 'users.menu',
         ],
-        [
+       /*  [
             'text' => 'Personal',
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
@@ -419,7 +419,7 @@ return [
                 ],
             ],
             'can' => 'admin.productos.menu',
-        ],
+        ], */
     ],
 
     /*

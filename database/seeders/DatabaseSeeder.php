@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            MedidaSeeder::class,
+            /* MedidaSeeder::class,
             MarcaSeeder::class,
             ServicioSeeder::class,
             ProveedorSeeder::class,
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
              InformeSeed::class,
              ProyectoSeed::class,
             ContratoSeed::class,
-            DocumentoSeed::class,
+            DocumentoSeed::class, */
         ]);
     }
 }
