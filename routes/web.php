@@ -1,22 +1,23 @@
 <?php
 
 use App\Http\Controllers\ActivityLogController;
-use App\Http\Controllers\CargoController;
-use App\Http\Controllers\CargoempleadoController;
-use App\Http\Controllers\MarcaController;
-use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\MaterialservicioController;
-use App\Http\Controllers\MedidaController;
-use App\Http\Controllers\NotaController;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ServicioController;
-use App\Http\Controllers\TiponotaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\EntradaController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\InformeController;
+use App\Http\Controllers\MaterialeController;
+use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\ProveedoreController;
+use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\SalidaController;
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +39,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('usuarios', UserController::class)->names('users');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::get('log', [ActivityLogController::class, 'index'])->name('activitylog');
-
+Route::resource('clientes', ClienteController::class);
+Route::resource('empleados', EmpleadoController::class);
+Route::resource('presupuestos', PresupuestoController::class);
+Route::resource('servicios', ServicioController::class);
+Route::resource('informes', InformeController::class);
+Route::resource('proyectos', ProyectoController::class);
+Route::resource('facturas', FacturaController::class);
+Route::resource('contratos', ContratoController::class);
+Route::resource('documentos', DocumentoController::class);
+Route::resource('proveedores', ProveedoreController::class);
+Route::resource('materiales', MaterialeController::class);
+Route::resource('entradas', EntradaController::class);
+Route::resource('salidas', SalidaController::class);

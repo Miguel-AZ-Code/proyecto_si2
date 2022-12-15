@@ -36,7 +36,6 @@ class User extends Authenticatable
         'name',
         'telefono',
         'email',
-        'password',
     ];
 
     /**
@@ -65,4 +64,20 @@ class User extends Authenticatable
             ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} user")
             ->useLogName('user');
     }
+//Query Scope
+ public function scopeName($query,$name){
+    if($name){
+        return $query->where('name','LIKE',"%$name%");
+    }
+ }
+ public function scopeEmail($query,$email){
+    if($email){
+        return $query->where('email','LIKE',"%$email%");
+    }
+ }
+ public function scopeFecha($query,$fecha){
+    if($fecha){
+        return $query->where('created_at','LIKE',"%$fecha%");
+    }
+ }
 }

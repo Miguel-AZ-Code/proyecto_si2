@@ -291,6 +291,7 @@ return [
 
     'menu' => [
         [
+            //---------------------MODULO DE ADMINISTRACION Y SEGURIDAD
             'text' => 'Administración y seguridad',
             'icon' => 'fas fa-fw fa-user-shield',
             'submenu' => [
@@ -320,106 +321,165 @@ return [
             ],
             'can' => 'users.menu',
         ],
-       /*  [
+        [
+          //------------------------------------MODULO PERSONAL
             'text' => 'Personal',
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
-                [
+              /*   [
                     'text' => 'Personas',
                     'route'  => 'admin.personas.index',
                     'icon' => 'fas fa-fw fa-user-friends',
                     'can' => 'admin.personas.index',
+                ], */
+                   [
+                    'text' => 'Cliente',
+                    'route'  => 'clientes.index',
+                    'icon' => 'fas fa-fw fa-user-friends',
+                    'can' => 'admin.clientes.index',
+                ], [
+                    'text' => 'Empleado',
+                    'route'  => 'empleados.index',
+                    'icon' => 'fas fa-fw fa-user-friends',
+                    'can' => 'admin.empleados.index',
                 ],
                 [
                     'text' => 'Proveedores',
-                    'route'  => 'admin.proveedores.index',
+                    'route'  => 'proveedores.index',
                     'icon' => 'fas fa-fw fa-users',
                     'can' => 'admin.proveedores.index',
                 ],
-                [
+               /*  [
                     'text' => 'Cargos',
-                    'route'  => 'admin.cargos.index',
+                    'route'  => 'cargos.index',
                     'icon' => 'fas fa-fw fa-user-tag',
                     'can' => 'admin.cargos.index',
-                ],
-                [
-                    'text' => 'Contratos',
-                    'route'  => 'admin.contratos.index',
-                    'icon' => 'fas fa-fw fa-user-check',
-                    'can' => 'admin.contratos.index',
-                ],
+                ], */
+
             ],
             'can' => 'admin.personas.menu',
         ],
         [
+              //---------------------MODULO DE ENTRADAS Y SALIDAS
             'text' => 'Entradas y Salidas',
             'icon' => 'fas fa-fw fa-dolly',
             'submenu' => [
 
                 [
                     'text' => 'Facturas',
-                    // 'route'  => 'admin.facturas.index',
-                    'url' => '/',
+                    'route'  => 'facturas.index',
+                   /*  'url' => '/', */
                     'icon' => 'fas fa-fw fa-clipboard-list',
                     'can' => 'admin.facturas.index',
-                    'label' => 'Proximamente',
-                    'label_icon' => 'info',
+                   /*  'label' => 'Proximamente',
+                    'label_icon' => 'info', */
                 ],
                 [
+                    'text' => ' Nota de Entrada',
+                    'route'  => 'entradas.index',
+                    'icon' => 'fas fa-fw fa-clipboard-check',
+                    'can' => 'admin.entradas.index',
+                ],
+                [
+                    'text' => ' Nota de Salidas',
+                    'route'  => 'salidas.index',
+                    'icon' => 'fas fa-fw fa-clipboard-check',
+                    'can' => 'admin.salidas.index',
+                ],
+               /*  [
                     'text' => 'Tipo de Notas',
-                    'route'  => 'admin.tiponotas.index',
+                    'route'  => 'tiponotas.index',
                     'icon' => 'fas fa-fw fa-clipboard-check',
                     'can' => 'admin.tiponotas.index',
-                ],
-                [
+                ], */
+               /*  [
                     'text' => 'Notas',
-                    'route'  => 'admin.notas.index',
+                    'route'  => 'notas.index',
                     'icon' => 'fas fa-fw fa-clipboard-check',
                     'can' => 'admin.notas.index',
-                ],
-                [
+                ], */
+               /*  [
                     'text' => 'Metodos de pago',
                     // 'route'  => 'admin.materiales.index',
                     'url'  => '/',
                     'icon' => 'fas fa-fw fa-money-check-alt',
-                    'can' => 'admin.pays.index',
+                    'can' => 'pays.index',
                     'label' => 'Proximamente',
                     'label_icon' => 'info',
-                ],
+                ], */
             ],
             'can' => 'admin.entradas.menu',
         ],
         [
+              //---------------------MODULO DE PRODUCTOS Y SERVICIOS
             'text' => 'Productos y servicios',
             'icon' => 'fas fa-fw fa-shopping-bag',
             'submenu' => [
-                [
+               /*  [
                     'text' => 'Medidas',
-                    'route'  => 'admin.medidas.index',
+                    'route'  => 'medidas.index',
                     'icon' => 'fas fa-fw fa-balance-scale',
                     'can' => 'admin.medidas.index',
-                ],
-                [
+                ], */
+                /* [
                     'text' => 'Marcas',
                     'route'  => 'admin.marcas.index',
                     'icon' => 'fas fa-fw fa-layer-group',
                     'can' => 'admin.marcas.index',
-                ],
+                ], */
                 [
                     'text' => 'Materiales',
-                    'route'  => 'admin.materiales.index',
+                    'route'  => 'materiales.index',
                     'icon' => 'fas fa-fw fa-boxes',
                     'can' => 'admin.materiales.index',
                 ],
                 [
                     'text' => 'Servicios',
-                    'route'  => 'admin.servicios.index',
+                    'route'  => 'servicios.index',
                     'icon' => 'fas fa-fw fa-shipping-fast',
                     'can' => 'admin.servicios.index',
                 ],
             ],
             'can' => 'admin.productos.menu',
-        ], */
+        ],
+        [
+            //---------------------------------MODULOS PROYECTOS-----------------------
+            'text' => 'Proyectos',
+            'icon' => 'fas fa-fw fa-shopping-bag',
+            'submenu' => [
+                [
+                    'text' => 'Presupuesto',
+                    'route'  => 'presupuestos.index',//->'admin.',
+                    'icon' => 'fas fa-fw fa-balance-scale',
+                    'can' => 'admin.presupuestos.index',
+                ],
+                [
+                    'text' => 'Proyectos',
+                    'route'  => 'proyectos.index',//->'admin.proyectos.index',
+                    'icon' => 'fas fa-fw fa-balance-scale',
+                    'can' => 'admin.proyectos.index',
+                ],
+                [
+                    'text' => 'Contratos',
+                    'route'  => 'contratos.index',//->'admin.contratos.index',
+                    'icon' => 'fas fa-fw fa-balance-scale',
+                    'can' => 'admin.contratos.index',
+                ],
+
+                [
+                    'text' => 'Documentos',
+                    'route'  => 'documentos.index',//->'admin.documentos.index',
+                    'icon' => 'fas fa-fw fa-balance-scale',
+                    'can' => 'admin.documentos.index',
+                ],
+                [
+                    'text' => 'Informes',
+                    'route'  => 'informes.index',//->'admin.informes.index',
+                    'icon' => 'fas fa-fw fa-balance-scale',
+                    'can' => 'admin.informes.index',
+                ],
+            ]
+        ],
     ],
 
     /*
