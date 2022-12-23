@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
              PresupuestoSeed::class,
              PagoSeed::class,
              FacturaSeed::class,
-             InformeSeed::class,
              ProyectoSeed::class,
+             InformeSeed::class,
             ContratoSeed::class,
             DocumentoSeed::class,
         ]);

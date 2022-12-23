@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('ubicacion');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->unsignedBigInteger('informe_id')
+           /*  $table->unsignedBigInteger('informe_id')
             ->foreign('informe_id')->references('id')->on('informes')
-            ->onDelete('cascade');
+            ->onDelete('cascade'); */
             $table->timestamps();
         });
     }

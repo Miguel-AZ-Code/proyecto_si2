@@ -16,9 +16,18 @@ class InformeSeed extends Seeder
     public function run()
     {
         Informe::create([
-            'Titulo' => '14785214',
-            'Descripcion' => '1',
+            'Titulo' => 'INFORME 1',
+            'Descripcion' => '1111111111111',
             'fecha' => date('Y-m-d H:i:s'),
+            'proyecto_id'=>1
+
+
+        ]);
+        Informe::create([
+            'Titulo' => 'INFORME 2',
+            'Descripcion' => 'XDDXDXDXDXDD',
+            'fecha' => date('Y-m-d H:i:s'),
+            'proyecto_id'=>1
 
 
         ]);

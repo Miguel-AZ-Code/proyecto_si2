@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('informes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('proyecto_id')
+                ->nullable()
+                ->constrained('proyectos')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->string('Titulo');
             $table->string('Descripcion');
             $table->date('fecha');
