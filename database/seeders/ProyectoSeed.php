@@ -16,12 +16,31 @@ class ProyectoSeed extends Seeder
     public function run()
     {
         Proyecto::create([
-            'nombre' => '14785214',
-            'estado' => '1',
+            'nombre' => 'Proyecto 1',
+            'estado' => 'En ejecución',
             'ubicacion' => '1',
             'fecha_inicio' => date('Y-m-d H:i:s'),
             'fecha_fin' =>date('Y-m-d H:i:s'),
-            'informe_id' =>1,
+
+
+        ]);
+        Proyecto::create([
+            'nombre' => 'Proyecto 2',
+            'estado' => 'Terminado',
+            'ubicacion' => '1',
+            'fecha_inicio' => date('Y-m-d H:i:s'),
+            'fecha_fin' =>date('Y-m-d H:i:s'),
+
+
+        ]);
+        Proyecto::create([
+            'nombre' => 'Proyecto 3',
+            'estado' => 'Terminado',
+            'ubicacion' => '1',
+            'fecha_inicio' => date('Y-m-d H:i:s'),
+            'fecha_fin' =>date('Y-m-d H:i:s'),
+
+
 
         ]);
     }

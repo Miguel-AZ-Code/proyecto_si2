@@ -29,13 +29,24 @@ Route::post("/signup",[AuthController::class,"signup"]);
 // Route::apiResource('marcas', MarcaController::class);
 // Route::apiResource('medidas', MedidaController::class);
 // Route::apiResource('servicios', ServicioController::class);
-
 Route::post("/documentos",[ClienteController::class,"postDocumento"]);
+
+
 //TODO: RUTAS PROTEGIDAS POR SANCTUM
 Route::group(['middleware'=>'auth:sanctum'],function () {
     Route::post("/logout",[AuthController::class,"logout"]);
     Route::get("/contracto",[ClienteController::class,"getContratos"]);
     Route::get("/documento",[ClienteController::class,"getDocumento"]);
+    Route::post("/ObtenerProyecto",[ClienteController::class,"ObtenerProyecto"]);
+    Route::post("/ObtenerInforme",[ClienteController::class,"ObtenerInforme"]);
+    Route::post("/ObtenerPresupuesto",[ClienteController::class,"ObtenerPresupuesto"]);
+    Route::post("/ObtenerServicio",[ClienteController::class,"ObtenerServicio"]);
+
+    Route::get("/CountContrato",[ClienteController::class,"CountContrato"]);
+    Route::get("/CountDocumentos",[ClienteController::class,"CountDocumentos"]);
+     Route::get("/CountInformes",[ClienteController::class,"CountInformes"]);
+
+     Route::post("/SumCostoTotalServicios",[ClienteController::class,"SumCostoTotalServicios"]);
 
 });
 
