@@ -85,8 +85,8 @@ class ClienteController extends Controller
     {
 
         $proyecto = Proyecto::select(["id", "nombre", "estado", "ubicacion", "fecha_inicio", "fecha_fin"])
-                            ->where('id', $request->id_proyecto)
-                            ->first();
+            ->where('id', $request->id_proyecto)
+            ->first();
 
         return $this->success(
             "Obteniendo Proyectos ",
@@ -99,8 +99,8 @@ class ClienteController extends Controller
     public function ObtenerInforme(Request $request): JsonResponse
     {
         $informes = Informe::select(["id", "Titulo", "Descripcion", "fecha"])
-                            ->where('proyecto_id', $request->id_informe)
-                            ->get();
+            ->where('proyecto_id', $request->id_informe)
+            ->get();
 
         return $this->success(
             "Obteniendo Informe",
@@ -112,44 +112,64 @@ class ClienteController extends Controller
     public function ObtenerPresupuesto(Request $request): JsonResponse
     {
         $presupuesto = Presupuesto::select(["id", "descripcion", "precio"])
-                                    ->where("id", $request->id_presupuesto)
-                                    ->first();
-         if(!empty($presupuesto)){
-             return $this->success(
-                 "Obteniendo presupuesto",
-                 $presupuesto->toArray(),
+            ->where("id", $request->id_presupuesto)
+            ->first();
+        if (!empty($presupuesto)) {
+            return $this->success(
+                "Obteniendo presupuesto",
+                $presupuesto->toArray(),
 
-             );
-
-         }else{
-           return null;
-         }
+            );
+        } else {
+            return null;
+        }
     }
 
     // Obtener servicios por un ID presupuesto
     public function ObtenerServicio(Request $request): JsonResponse
     {
-        $servicios=DB::table("presupuestos")
-                    ->select(["servicios.id","servicios.nombre","servicios.descripcion","servicios.costo"])
-                    ->join("presupuestoservicios","presupuestoservicios.presupuesto_id","=","presupuestos.id")
-                    ->join("servicios","servicios.id","=","presupuestoservicios.servicio_id")
-                    ->where("presupuestos.id",$request->id_presupuesto)
-                    ->get();
+        $servicios = DB::table("presupuestos")
+            ->select(["servicios.id", "servicios.nombre", "servicios.descripcion", "servicios.costo"])
+            ->join("presupuestoservicios", "presupuestoservicios.presupuesto_id", "=", "presupuestos.id")
+            ->join("servicios", "servicios.id", "=", "presupuestoservicios.servicio_id")
+            ->where("presupuestos.id", $request->id_presupuesto)
+            ->get();
 
 
-                        return $this->success(
-                            "Obteniendo servicio",
-                            $servicios->toArray(),
 
-                        );
 
+
+        return $this->success(
+            "Obteniendo servicio",
+            $servicios->toArray(),
+
+
+        );
+    }
+
+    public function SumCostoTotalServicios(Request $request): JsonResponse{
+
+        $sumTotalCostoServicios = DB::table("presupuestos")
+
+        ->select('servicios.costo')
+        ->join("presupuestoservicios", "presupuestoservicios.presupuesto_id", "=", "presupuestos.id")
+        ->join("servicios", "servicios.id", "=", "presupuestoservicios.servicio_id")
+        ->where("presupuestos.id", $request->id_presupuesto)
+       ->sum('servicios.costo');
+
+        return $this->success(
+            "sum costo total de servicio",
+            $sumTotalCostoServicios,
+
+        );
 
     }
 
 
     // conteo de ccontratos para el cliente en especifico
-    public function CountContrato(){
-        $countContrato=Contrato::where('cliente_id',Auth::user()->id)->count();
+    public function CountContrato()
+    {
+        $countContrato = Contrato::where('cliente_id', Auth::user()->id)->count();
 
         return $this->success(
             "Total de contrato",
@@ -159,12 +179,13 @@ class ClienteController extends Controller
     }
 
 
-     // conteo de DOCUMENTOS para el cliente en especifico
-     public function CountDocumentos(){
-        $countDocumentos=DB::table("contratos")
-        ->join("documentos","documentos.contrato_id","=","contratos.id")
-        ->where("contratos.cliente_id",Auth::user()->id)
-        ->count();
+    // conteo de DOCUMENTOS para el cliente en especifico
+    public function CountDocumentos()
+    {
+        $countDocumentos = DB::table("contratos")
+            ->join("documentos", "documentos.contrato_id", "=", "contratos.id")
+            ->where("contratos.cliente_id", Auth::user()->id)
+            ->count();
 
         return $this->success(
             "Total de Documentos",
@@ -175,17 +196,18 @@ class ClienteController extends Controller
 
     // conteo de INFORMES para el cliente
 
-    public function CountInformes(){
-        $countInformes=DB::table("contratos")
-                            ->join("proyectos","proyectos.id","=","contratos.proyecto_id")
-                            ->join("informes","informes.proyecto_id","=","proyectos.id")
-                            ->where("contratos.cliente_id",Auth::user()->id)
-                            ->count();
+    public function CountInformes()
+    {
+        $countInformes = DB::table("contratos")
+            ->join("proyectos", "proyectos.id", "=", "contratos.proyecto_id")
+            ->join("informes", "informes.proyecto_id", "=", "proyectos.id")
+            ->where("contratos.cliente_id", Auth::user()->id)
+            ->count();
 
-                            return $this->success(
-                                "Total de Informes",
-                                $countInformes,
+        return $this->success(
+            "Total de Informes",
+            $countInformes,
 
-                            );
+        );
     }
 }

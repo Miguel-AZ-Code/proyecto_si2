@@ -46,6 +46,7 @@ Route::group(['middleware'=>'auth:sanctum'],function () {
     Route::get("/CountDocumentos",[ClienteController::class,"CountDocumentos"]);
      Route::get("/CountInformes",[ClienteController::class,"CountInformes"]);
 
+     Route::post("/SumCostoTotalServicios",[ClienteController::class,"SumCostoTotalServicios"]);
 
 });
 
